@@ -1,0 +1,40 @@
+<div class="card-deck">
+  <div class="card m-3" *ngFor="let emp of employees;">
+    <div class="card-header">
+      <h3>{{emp.name}}</h3>
+    </div>
+    <div class="card-body">      
+        <div class="row vertical-align">
+          <div class="col-4">
+            <img [src]="emp.photoPath" class="imageClass" alt="emp.name">
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <div class="col-3">Name:</div>
+              <div class="col-3">{{emp.name}}</div>
+              <div class="col-3">Gender:</div>
+              <div class="col-3">{{emp.gender}}</div>
+            </div>
+            <div class="row">
+              <div class="col-3">Birth Date:</div>
+              <div class="col-3">{{emp.dateOfBirth | date}}</div>
+              <div class="col-3">Active:</div>
+              <div class="col-3">{{emp.isActive}}</div>
+            </div>
+            <div class="row">
+              <div class="col-3">Department:</div>
+              <div class="col-3">{{emp.department}}</div>
+              <div class="col-3">Contact Preference:</div>
+              <div class="col-3">{{emp.contactPreference}}</div>
+            </div>
+            <div class="row">
+              <div class="col-3">Email:</div>
+              <div class="col-3">{{emp.email}}</div>
+              <div class="col-3">Phone Number:</div>
+              <div class="col-3">{{emp.phoneNumber}}</div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
