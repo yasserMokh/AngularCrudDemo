@@ -1,61 +1,69 @@
-<form #empForm="ngForm" (ngSubmit)="saveEmployee(empForm)">
+<form #empForm="ngForm" (ngSubmit)="saveEmployee(empForm, employeeModel)" [class]="formValidationClass">
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="name" class="form-control" id="name" name="name" [(ngModel)]="name">
-    </div>
+        <input required type="name" class="form-control" id="name" name="name" [(ngModel)]="employeeModel.name" #nameControl="ngModel">
+        <span class="invalid-feedback">Name is required!</span>
+    </div>    
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email">
+        <input type="text" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="employeeModel.email" [required]="contact.value=='email'">
+        <span class="invalid-feedback" *ngIf="email.errors?.['required']">Email is required!</span>
+        <span class="invalid-feedback" *ngIf="email.errors?.['pattern']">Email is invalid!</span>
     </div>
     <div class="mb-3">
-        <label for="phoneNumber" class="form-label">Email</label>
-        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="employeeModel.phoneNumber" [required]="contact.value=='phone'">
+        <span class="invalid-feedback">Phone Number is required!</span>
     </div>
     <div class="mb-3">
         <label class="form-label">Contact Preference</label>
         <div class="form-control">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="radioContactEmail" name="contactPreference"
-                    value="email" [(ngModel)]="contactPreference">
+                <input class="form-check-input" type="radio" id="radioContactEmail" name="contactPreference" required #contact="ngModel"
+                    value="email" [(ngModel)]="employeeModel.contactPreference">
                 <label class="form-check-label" for="radioContactEmail">Email</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="radioContactPhone" name="contactPreference"
-                    value="phone" [(ngModel)]="contactPreference">
+                <input class="form-check-input" type="radio" id="radioContactPhone" name="contactPreference" required #contact="ngModel"
+                    value="phone" [(ngModel)]="employeeModel.contactPreference">
                 <label class="form-check-label" for="radioContactPhone">Phone</label>
             </div>
         </div>
+        <span class="invalid-feedback" [style]="(empForm.submitted && contact.invalid)?'display: block;':''" *ngIf="gender.invalid">Contact Preference is required!</span>
     </div>
     <div class="mb-3">
         <label class="form-label">Gender</label>
         <div class="form-control">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="radioGenderMale" name="gender" value="male"
-                    [(ngModel)]="gender">
+                <input class="form-check-input" type="radio" id="radioGenderMale" name="gender" value="male" required #gender="ngModel"
+                    [(ngModel)]="employeeModel.gender">
                 <label class="form-check-label" for="radioGenderMale">Male</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="radioGenderFemale" name="gender" value="female"
-                    [(ngModel)]="gender">
+                <input class="form-check-input" type="radio" id="radioGenderFemale" name="gender" value="female" required #gender="ngModel"
+                    [(ngModel)]="employeeModel.gender">
                 <label class="form-check-label" for="radioGenderFemale">Female</label>
             </div>
         </div>
+        <span class="invalid-feedback" [style]="(empForm.submitted && gender.invalid)?'display: block;':''" *ngIf="gender.invalid">Gender is required!</span>
     </div>
     <div class="mb-3">
         <label for="dateOfBirth" class="form-label">Birth Date</label>
-        <input type="text" id="dateOfBirth" bsDatepicker [bsConfig]="datepickerConfig" name="dateOfBirth" [(ngModel)]="dateOfBirth" class="form-control">
+        <input type="text" id="dateOfBirth" bsDatepicker [bsConfig]="datepickerConfig" name="dateOfBirth" [(ngModel)]="employeeModel.dateOfBirth" class="form-control">
     </div>
     <div class="mb-3">
         <label for="department" class="form-label">Department</label>
-        <select id="department" name="department" [(ngModel)]="department" class="form-select">
+        <select id="department" name="department" [(ngModel)]="employeeModel.department" class="form-select" required min="0">
+            <option value="" selected disabled>Select Department</option>
             <option *ngFor="let dep of departments" [value]="dep.id">{{dep.name}}</option>
         </select>
+        <span class="invalid-feedback">Department is required!</span>
     </div>
     <div class="mb-3">
         <div class="form-control">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="isActive" id="checkIsActive"
-                    [(ngModel)]="isActive">
+                    [(ngModel)]="employeeModel.isActive">
                 <label class="form-check-label" for="checkIsActive">
                     Is Active
                 </label>
@@ -65,3 +73,6 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 Angular Generated Form Model : {{empForm.value | json}}
+<br/>
+<br/>
+Employee Model : {{employeeModel | json}}

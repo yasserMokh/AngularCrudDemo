@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { IDepartment } from 'src/app/models/interfaces/idepartment.interface';
 import { DepartmentService } from 'src/app/services/department.service';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { IEmployee } from 'src/app/models/interfaces/iemployee.interface';
+import { Employee } from 'src/app/models/employee.model';
 
 @Component({
   selector: 'app-create-employee',
@@ -13,15 +15,9 @@ export class CreateEmployeeComponent implements OnInit {
 
   datepickerConfig : Partial<BsDatepickerConfig>;
   departments: IDepartment[] | null = null;
+  formValidationClass="needs-validation";
 
-  name: string = '';
-  email: string = '';
-  gender: string = '';
-  contactPreference: string = '';
-  phoneNumber: string = '';
-  department: string = '';
-  isActive: boolean = true;
-  dateOfBirth: Date | null = null;
+  employeeModel: IEmployee=new Employee();
 
   constructor(private _departmentService: DepartmentService) { 
     this.datepickerConfig = Object.assign({}, 
@@ -36,8 +32,10 @@ export class CreateEmployeeComponent implements OnInit {
     this.departments = this._departmentService.getAllDepartments();
   }
 
-  saveEmployee(empForm: NgForm): void {
-    console.log(empForm.value);
+  saveEmployee(empForm: NgForm, employeeModel: IEmployee): void {
+    this.formValidationClass="was-validated";
+    console.log(empForm.valid);
+    console.log(employeeModel);
   }
 
 }

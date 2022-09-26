@@ -1,12 +1,12 @@
 export interface IEmployee {
     id:number;
-    name:string;
-    gender:string;
+    name:string | null;
+    gender:string | null;
     email:string | null;
     phoneNumber:string | null;
-    contactPreference:string;
-    dateOfBirth:Date;
-    department:string;
+    contactPreference:string | null;
+    dateOfBirth:Date | null;
+    department:number;
     isActive:boolean;
     photoPath:string | null;
 }
