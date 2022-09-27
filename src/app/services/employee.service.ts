@@ -21,7 +21,9 @@ export class EmployeeService {
         isActive: true,
         email: 'mark@pragimtech.com',
         phoneNumber: null,
-        photoPath: 'assets/images/mark.png'
+        photoPath: 'assets/images/mark.png',
+        password: null,
+        confirmPassword: null
       },
       {
         id: 2,
@@ -33,7 +35,9 @@ export class EmployeeService {
         isActive: true,
         email: null,
         phoneNumber: '2345978640',
-        photoPath: 'assets/images/mary.png'
+        photoPath: 'assets/images/mary.png',
+        password: null,
+        confirmPassword: null
       },
       {
         id: 3,
@@ -45,7 +49,9 @@ export class EmployeeService {
         isActive: false,
         email: null,
         phoneNumber: '5432978640',
-        photoPath: 'assets/images/john.png'
+        photoPath: 'assets/images/john.png',
+        password: null,
+        confirmPassword: null
       }
     ]
   }

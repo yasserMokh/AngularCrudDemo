@@ -9,13 +9,17 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AppComponent } from './app.component';
 import { EmployeeListComponent } from './components/employee/employee-list.component';
 import { CreateEmployeeComponent } from './components/employee/create-employee.component';
+import { SelectRequiredValidatorDirective } from './shared/select-required-validator.directive';
+import { CompareValidatorDirective } from './shared/compare-validator.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    SelectRequiredValidatorDirective,
+    CompareValidatorDirective
   ],
   imports: [
     BrowserModule,

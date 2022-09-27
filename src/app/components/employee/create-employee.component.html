@@ -1,23 +1,23 @@
 <form #empForm="ngForm" (ngSubmit)="saveEmployee(empForm, employeeModel)" [class]="formValidationClass">
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input required type="name" class="form-control" id="name" name="name" [(ngModel)]="employeeModel.name" #nameControl="ngModel">
+        <input required type="name" class="form-control" id="name" name="name" [(ngModel)]="employeeModel.name" #name="ngModel" [class.is-invalid]="empForm.submitted && name.invalid">
         <span class="invalid-feedback">Name is required!</span>
     </div>    
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="text" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="employeeModel.email" [required]="contact.value=='email'">
+        <input type="text" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="employeeModel.email" [required]="contact.value=='email'" [class.is-invalid]="empForm.submitted && email.invalid">
         <span class="invalid-feedback" *ngIf="email.errors?.['required']">Email is required!</span>
         <span class="invalid-feedback" *ngIf="email.errors?.['pattern']">Email is invalid!</span>
     </div>
     <div class="mb-3">
         <label for="phoneNumber" class="form-label">Phone Number</label>
-        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="employeeModel.phoneNumber" [required]="contact.value=='phone'">
+        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="employeeModel.phoneNumber" [required]="contact.value=='phone'" #phoneNumber="ngModel" [class.is-invalid]="empForm.submitted && phoneNumber.invalid">
         <span class="invalid-feedback">Phone Number is required!</span>
     </div>
     <div class="mb-3">
         <label class="form-label">Contact Preference</label>
-        <div class="form-control">
+        <div class="form-control" [class.is-invalid]="empForm.submitted && contact.invalid">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="radioContactEmail" name="contactPreference" required #contact="ngModel"
                     value="email" [(ngModel)]="employeeModel.contactPreference">
@@ -33,7 +33,7 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Gender</label>
-        <div class="form-control">
+        <div class="form-control" [class.is-invalid]="empForm.submitted && gender.invalid">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="radioGenderMale" name="gender" value="male" required #gender="ngModel"
                     [(ngModel)]="employeeModel.gender">
@@ -53,11 +53,15 @@
     </div>
     <div class="mb-3">
         <label for="department" class="form-label">Department</label>
-        <select id="department" name="department" [(ngModel)]="employeeModel.department" class="form-select" required min="0">
-            <option value="" selected disabled>Select Department</option>
+        <select id="department" name="department" [(ngModel)]="employeeModel.department" [class]="empForm.submitted && department.invalid && department.errors?.['defaultSelected']? 'form-select is-invalid': 'form-select'" required appSelectRequiredValidator="-1" #department="ngModel">
+            <option value="-1" selected  >Select Department</option>
             <option *ngFor="let dep of departments" [value]="dep.id">{{dep.name}}</option>
         </select>
         <span class="invalid-feedback">Department is required!</span>
+        <!-- <div>department.invalid :{{department.invalid}}</div>
+        <div>department.errors?.['defaultSelected'] :{{department.errors?.['defaultSelected']}}</div> -->
+        <!-- <div style="border:2px black" *ngIf="department.invalid && department.errors?.['defaultSelected']">defaultSelected</div> -->
+         <!-- <span class="invalid-feedback" *ngIf="department.invalid && department.errors?.['defaultSelected']">Department is required!</span> -->
     </div>
     <div class="mb-3">
         <div class="form-control">
@@ -69,6 +73,20 @@
                 </label>
             </div>
         </div>
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">Password</label>
+        <input required type="name" class="form-control" id="password" name="password" [(ngModel)]="employeeModel.password" #password="ngModel" [class.is-invalid]="empForm.submitted && (password.invalid || (confirmPassword.invalid && confirmPassword.value && confirmPassword.errors?.['appCompareValidator']))" (change)="confirmPassword.control.updateValueAndValidity()">
+        <span class="invalid-feedback" *ngIf="password.errors?.['required']">Password is required!</span>
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">Confirm Password</label>
+        <input required type="name" class="form-control" id="confirmPassword" name="confirmPassword" [(ngModel)]="employeeModel.confirmPassword" #confirmPassword="ngModel" [class.is-invalid]="empForm.submitted && confirmPassword.invalid"
+           appCompareValidator="password" >
+        <span class="invalid-feedback" *ngIf="confirmPassword.errors?.['required']">Confirm Password is required!</span>
+        <span class="invalid-feedback" *ngIf="confirmPassword.value && confirmPassword.errors?.['appCompareValidator']">Password and Confirm Password does not match!</span>
+       <!--  <div>confirmPassword.errors?.['required']" : {{confirmPassword.errors?.['required']}}</div>
+        <div>confirmPassword.errors?.['appCompareValidator']" : {{confirmPassword.errors?.['appCompareValidator']}}</div> -->
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

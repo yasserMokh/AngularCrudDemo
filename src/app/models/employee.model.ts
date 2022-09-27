@@ -6,11 +6,13 @@ export class Employee implements IEmployee {
     public gender: string | null = null;
     public dateOfBirth: Date | null = null;
     public contactPreference: string | null = null;
-    public department: number=-1;
+    public department: number = -1;
     public isActive: boolean = false;
     public email: string | null = null;
     public phoneNumber: string | null = null;
     public photoPath: string | null = null;
+    public password: string | null = null;
+    public confirmPassword: string | null = null;
 
     // constructor(public id:number, 
     //     public name:string, 

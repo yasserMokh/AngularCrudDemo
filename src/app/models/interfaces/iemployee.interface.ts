@@ -9,4 +9,6 @@ export interface IEmployee {
     department:number;
     isActive:boolean;
     photoPath:string | null;
+    password:string | null;
+    confirmPassword:string | null;
 }

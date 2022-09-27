@@ -33,9 +33,9 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   saveEmployee(empForm: NgForm, employeeModel: IEmployee): void {
-    this.formValidationClass="was-validated";
+    //this.formValidationClass="was-validated";
     console.log(empForm.valid);
-    console.log(employeeModel);
+    console.log(empForm);
   }
 
 }
