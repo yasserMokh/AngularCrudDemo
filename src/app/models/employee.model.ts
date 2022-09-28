@@ -11,8 +11,8 @@ export class Employee implements IEmployee {
     public email: string | null = null;
     public phoneNumber: string | null = null;
     public photoPath: string | null = null;
-    public password: string | null = null;
-    public confirmPassword: string | null = null;
+    // public password: string | null = null;
+    // public confirmPassword: string | null = null;
 
     // constructor(public id:number, 
     //     public name:string, 

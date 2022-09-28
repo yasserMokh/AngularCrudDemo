@@ -74,7 +74,7 @@
             </div>
         </div>
     </div>
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="name" class="form-label">Password</label>
         <input required type="name" class="form-control" id="password" name="password" [(ngModel)]="employeeModel.password" #password="ngModel" [class.is-invalid]="empForm.submitted && (password.invalid || (confirmPassword.invalid && confirmPassword.value && confirmPassword.errors?.['appCompareValidator']))" (change)="confirmPassword.control.updateValueAndValidity()">
         <span class="invalid-feedback" *ngIf="password.errors?.['required']">Password is required!</span>
@@ -85,9 +85,7 @@
            appCompareValidator="password" >
         <span class="invalid-feedback" *ngIf="confirmPassword.errors?.['required']">Confirm Password is required!</span>
         <span class="invalid-feedback" *ngIf="confirmPassword.value && confirmPassword.errors?.['appCompareValidator']">Password and Confirm Password does not match!</span>
-       <!--  <div>confirmPassword.errors?.['required']" : {{confirmPassword.errors?.['required']}}</div>
-        <div>confirmPassword.errors?.['appCompareValidator']" : {{confirmPassword.errors?.['appCompareValidator']}}</div> -->
-    </div>
+    </div> -->
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 Angular Generated Form Model : {{empForm.value | json}}

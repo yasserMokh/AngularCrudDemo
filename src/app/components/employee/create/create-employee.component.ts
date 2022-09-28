@@ -5,11 +5,12 @@ import { DepartmentService } from 'src/app/services/department.service';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { IEmployee } from 'src/app/models/interfaces/iemployee.interface';
 import { Employee } from 'src/app/models/employee.model';
+import { EmployeeService } from 'src/app/services/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-employee',
-  templateUrl: './create-employee.component.html',
-  styleUrls: ['./create-employee.component.css']
+  templateUrl: './create-employee.component.html'
 })
 export class CreateEmployeeComponent implements OnInit {
 
@@ -19,7 +20,7 @@ export class CreateEmployeeComponent implements OnInit {
 
   employeeModel: IEmployee=new Employee();
 
-  constructor(private _departmentService: DepartmentService) { 
+  constructor(private _departmentService: DepartmentService, private _employeeService: EmployeeService, private _router: Router) { 
     this.datepickerConfig = Object.assign({}, 
       {
         containerClass:'theme-dark-blue',
@@ -36,6 +37,10 @@ export class CreateEmployeeComponent implements OnInit {
     //this.formValidationClass="was-validated";
     console.log(empForm.valid);
     console.log(empForm);
+    if(empForm.valid){
+      this._employeeService.saveEmployee(employeeModel);
+      this._router.navigate(['employee.list']);
+    }
   }
 
 }
