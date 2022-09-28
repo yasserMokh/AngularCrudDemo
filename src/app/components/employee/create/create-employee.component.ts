@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IDepartment } from 'src/app/models/interfaces/idepartment.interface';
 import { DepartmentService } from 'src/app/services/department.service';
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   templateUrl: './create-employee.component.html'
 })
 export class CreateEmployeeComponent implements OnInit {
+  @ViewChild('empForm') public createEmployeeForm: NgForm | null = null;
 
   datepickerConfig : Partial<BsDatepickerConfig>;
   departments: IDepartment[] | null = null;
