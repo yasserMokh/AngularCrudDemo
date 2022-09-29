@@ -1,5 +1,5 @@
 <div class="card-deck">
-  <div *ngFor="let emp of employees;" (click)="onEmployeeClick(emp.id)" >
+  <div *ngFor="let emp of employees;" (click)="onEmployeeClick(emp.id)" [class.highlight]="emp.id===selectedId" >
 
     <app-view-employee [employee]="emp"></app-view-employee>
   </div>

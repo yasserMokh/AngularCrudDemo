@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee.model';
 import { IEmployee } from 'src/app/models/interfaces/iemployee.interface';
 import { EmployeeService } from 'src/app/services/employee.service';
@@ -14,8 +14,9 @@ export class EmployeeListComponent implements OnInit {
   currentIndex: number = 0;
   employeeToDisplay: IEmployee = new Employee();
   clickedEmployee: IEmployee | null = null;
+  selectedId: number=-1;
 
-  constructor(private _employeeService: EmployeeService, private _router: Router) {
+  constructor(private _employeeService: EmployeeService, private _router: Router, private _route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -23,6 +24,13 @@ export class EmployeeListComponent implements OnInit {
     if (this.employees && this.employees.length > 0) {
       this.employeeToDisplay = this.employees[this.currentIndex];
     }
+    this._route.paramMap.subscribe(params=>{
+      let id = params.get('id');
+      if(!id){
+        return;
+      }
+      this.selectedId=+id;
+    });
   }
 
   nextEmployee(): void {
