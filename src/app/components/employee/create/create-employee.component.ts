@@ -40,7 +40,8 @@ export class CreateEmployeeComponent implements OnInit {
     console.log(empForm);
     if(empForm.valid){
       this._employeeService.saveEmployee(employeeModel);
-      this._router.navigate(['employee.list']);
+      empForm.resetForm();
+      //this._router.navigate(['employee.list']);
     }
   }
 
