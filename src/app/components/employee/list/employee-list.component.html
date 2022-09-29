@@ -1,15 +1,22 @@
-<h1 #listHeader>
+<div class="card-deck">
+  <div *ngFor="let emp of employees;" (click)="onEmployeeClick(emp.id)" >
 
-</h1>
+    <app-view-employee [employee]="emp"></app-view-employee>
+  </div>
+</div>
+
+<!-- <h1 #listHeader>
+
+</h1> -->
 <!-- <h1 *ngIf="clickedEmployee">
 {{clickedEmployee.name}}
 </h1> -->
-<div class="card-deck">
+<!-- <div class="card-deck">
   <div class="card m-3" *ngFor="let emp of employees;">
     <div (click)="listHeader.innerHTML = (viewEmp.employee && viewEmp.employee.name)?viewEmp.employee.name:''">
       <app-view-employee [employee]="emp" (employeeClicked)="handleEmployeeClick($event)" #viewEmp></app-view-employee>
     </div>
   </div>
-</div>
+</div> -->
 <!-- <button (click)="nextEmployee()">Next</button>
 <app-view-employee [employee]="employeeToDisplay"></app-view-employee> -->

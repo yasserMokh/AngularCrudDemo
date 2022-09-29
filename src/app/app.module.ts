@@ -12,6 +12,7 @@ import { CreateEmployeeComponent } from './components/employee/create/create-emp
 import { SelectRequiredValidatorDirective } from './shared/validation/select-required-validator.directive';
 import { ViewEmployeeComponent } from './components/employee/view/view-employee.component';
 import { CompareValidatorDirective } from './shared/validation/compare-validator.directive';
+import { EmployeeDetailsComponent } from './components/employee/details/employee-details.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CompareValidatorDirective } from './shared/validation/compare-validator
     CreateEmployeeComponent,
     SelectRequiredValidatorDirective,
     CompareValidatorDirective,
-    ViewEmployeeComponent
+    ViewEmployeeComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,

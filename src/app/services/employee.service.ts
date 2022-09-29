@@ -54,6 +54,14 @@ export class EmployeeService {
     return this._employees;
   }
 
+  getEmployee(employeeId:number):IEmployee | null{
+    let emp = this._employees.find(e=>e.id===employeeId);
+    if(!emp){
+      return null;
+    }
+    return emp;
+  }
+
   saveEmployee(employee:IEmployee): void{
     this._employees.push(employee);
   }

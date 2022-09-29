@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee.model';
 import { IEmployee } from 'src/app/models/interfaces/iemployee.interface';
 import { EmployeeService } from 'src/app/services/employee.service';
@@ -14,7 +15,7 @@ export class EmployeeListComponent implements OnInit {
   employeeToDisplay: IEmployee = new Employee();
   clickedEmployee: IEmployee | null = null;
 
-  constructor(private _employeeService: EmployeeService) {
+  constructor(private _employeeService: EmployeeService, private _router: Router) {
   }
 
   ngOnInit(): void {
@@ -39,6 +40,10 @@ export class EmployeeListComponent implements OnInit {
 
   handleEmployeeClick(eventData: IEmployee) {
     this.clickedEmployee = eventData;
+  }
+
+  onEmployeeClick(employeeId: number){
+      this._router.navigate(['employees', employeeId]);
   }
 
 }
