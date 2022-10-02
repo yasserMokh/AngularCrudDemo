@@ -15,6 +15,7 @@ export class EmployeeListComponent implements OnInit {
   employeeToDisplay: IEmployee = new Employee();
   clickedEmployee: IEmployee | null = null;
   selectedId: number=-1;
+  searchTerm:string='';
 
   constructor(private _employeeService: EmployeeService, private _router: Router, private _route: ActivatedRoute) {
   }

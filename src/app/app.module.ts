@@ -7,12 +7,13 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 import { AppComponent } from './app.component';
-import { EmployeeListComponent } from './components/employee/list/employee-list.component';
-import { CreateEmployeeComponent } from './components/employee/create/create-employee.component';
+import { EmployeeListComponent } from './employee/components/list/employee-list.component';
+import { CreateEmployeeComponent } from './employee/components/create/create-employee.component';
 import { SelectRequiredValidatorDirective } from './shared/validation/select-required-validator.directive';
-import { ViewEmployeeComponent } from './components/employee/view/view-employee.component';
+import { ViewEmployeeComponent } from './employee/components/view/view-employee.component';
 import { CompareValidatorDirective } from './shared/validation/compare-validator.directive';
-import { EmployeeDetailsComponent } from './components/employee/details/employee-details.component';
+import { EmployeeDetailsComponent } from './employee/components/details/employee-details.component';
+import { FilterEmployeesByNamePipe } from './employee/filters/filter-employees-by-name.pipe';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { EmployeeDetailsComponent } from './components/employee/details/employee
     SelectRequiredValidatorDirective,
     CompareValidatorDirective,
     ViewEmployeeComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    FilterEmployeesByNamePipe
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,8 @@
+<div class="mb-3"> 
+  <input type="name" class="form-control" id="name" name="name" [(ngModel)]="searchTerm" placeholder="Search By Name" /> 
+</div> 
 <div class="card-deck">
-  <div *ngFor="let emp of employees;" (click)="onEmployeeClick(emp.id)" [class.highlight]="emp.id===selectedId" >
+  <div *ngFor="let emp of employees | filterEmployeesByName:searchTerm;" (click)="onEmployeeClick(emp.id)" [class.highlight]="emp.id===selectedId" >
 
     <app-view-employee [employee]="emp"></app-view-employee>
   </div>

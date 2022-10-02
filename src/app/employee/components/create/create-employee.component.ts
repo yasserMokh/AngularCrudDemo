@@ -41,7 +41,7 @@ export class CreateEmployeeComponent implements OnInit {
     if(empForm.valid){
       this._employeeService.saveEmployee(employeeModel);
       empForm.resetForm();
-      //this._router.navigate(['employee.list']);
+      this._router.navigate(['employee.list']);
     }
   }
 

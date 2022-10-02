@@ -63,6 +63,7 @@ export class EmployeeService {
   }
 
   saveEmployee(employee:IEmployee): void{
-    this._employees.push(employee);
+    let empCopy=Object.assign({}, employee);
+    this._employees.push(empCopy);
   }
 }

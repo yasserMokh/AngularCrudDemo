@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateEmployeeComponent } from './components/employee/create/create-employee.component';
-import { CreateEmployeeCanDeactivateGuard } from './components/employee/create/create-employee-can-deactivate.guard';
-import { EmployeeListComponent } from './components/employee/list/employee-list.component';
-import { EmployeeDetailsComponent } from './components/employee/details/employee-details.component';
+import { CreateEmployeeComponent } from './employee/components/create/create-employee.component';
+import { CreateEmployeeCanDeactivateGuard } from './employee/guards/create-employee-can-deactivate.guard';
+import { EmployeeListComponent } from './employee/components/list/employee-list.component';
+import { EmployeeDetailsComponent } from './employee/components/details/employee-details.component';
 
 const routes: Routes = [
   {path: 'employee.list', component:EmployeeListComponent },
