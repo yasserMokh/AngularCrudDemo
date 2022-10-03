@@ -15,9 +15,9 @@ export class EmployeeService {
       {
         id: 1,
         name: 'Mark',
-        gender: 'Male',
+        gender: 'male',
         dateOfBirth: new Date('10/25/1988'),
-        contactPreference: 'Email',
+        contactPreference: 'email',
         department: 1,
         isActive: true,
         email: 'mark@pragimtech.com',
@@ -27,9 +27,9 @@ export class EmployeeService {
       {
         id: 2,
         name: 'Mary',
-        gender: 'Female',
+        gender: 'female',
         dateOfBirth: new Date('11/20/1979'),
-        contactPreference: 'Phone',
+        contactPreference: 'phone',
         department: 2,
         isActive: true,
         email: null,
@@ -39,9 +39,9 @@ export class EmployeeService {
       {
         id: 3,
         name: 'John',
-        gender: 'Male',
+        gender: 'male',
         dateOfBirth: new Date('3/25/1976'),
-        contactPreference: 'Phone',
+        contactPreference: 'phone',
         department: 1,
         isActive: false,
         email: null,
@@ -52,20 +52,34 @@ export class EmployeeService {
   }
 
   getAllEmployees(): Observable<IEmployee[]> {
-    
+
     return ObservableOf(this._employees).pipe(ObservableDelay(2000));
   }
 
-  getEmployee(employeeId:number):IEmployee | null{
-    let emp = this._employees.find(e=>e.id===employeeId);
-    if(!emp){
+  getEmployee(employeeId: number): IEmployee | null {
+    let emp = this._employees.find(e => e.id === employeeId);
+    if (!emp) {
       return null;
     }
     return emp;
   }
 
-  saveEmployee(employee:IEmployee): void{
-    let empCopy=Object.assign({}, employee);
+  saveEmployee(employee: IEmployee): void {
+    console.log('employee', employee);
+    let empIndex = this._employees.findIndex(e => e.id === employee.id);
+    console.log('empIndex', empIndex);
+    this._employees[empIndex] = Object.assign({}, employee);
+    console.log(this._employees);
+  }
+
+
+  createEmployee(employee: IEmployee): void {
+    let empCopy = Object.assign({}, employee);
+    let maxId = this._employees.reduce((e1, e2) => {
+      return (e1.id > e2.id) ? e1 : e2;
+    }).id;
+    empCopy.id = maxId + 1;
     this._employees.push(empCopy);
+    console.log(empCopy);
   }
 }

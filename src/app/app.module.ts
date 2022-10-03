@@ -16,6 +16,8 @@ import { EmployeeDetailsComponent } from './employee/components/details/employee
 import { FilterEmployeesByNamePipe } from './employee/filters/filter-employees-by-name.pipe';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { NavigationLoadingIndicatorComponent } from './shared/components/navigation-loading-indicator/navigation-loading-indicator.component';
+import { EmployeeFormComponent } from './employee/components/employee-form/employee-form.component';
+import { EditEmployeeComponent } from './employee/components/edit/edit-employee.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { NavigationLoadingIndicatorComponent } from './shared/components/navigat
     EmployeeDetailsComponent,
     FilterEmployeesByNamePipe,
     SpinnerComponent,
-    NavigationLoadingIndicatorComponent    
+    NavigationLoadingIndicatorComponent,
+    EmployeeFormComponent,
+    EditEmployeeComponent    
   ],
   imports: [
     BrowserModule,
