@@ -16,19 +16,22 @@ export class EmployeeDetailsComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private _employeeService: EmployeeService, private _router: Router) { }
 
   ngOnInit(): void {
-    this._employeesCount = this._employeeService.getAllEmployees().length;
-    this._route.paramMap.subscribe(params => {
-      let id = params.get('id');
-      if (!id) {
-        return;
-      }
-      this._id = +id;
-      let emp = this._employeeService.getEmployee(this._id);
-      if (!emp) {
-        return;
-      }
-      this.employee = emp;
+    this._employeeService.getAllEmployees().subscribe(empList => {
+      this._employeesCount = empList.length;
+      this._route.paramMap.subscribe(params => {
+        let id = params.get('id');
+        if (!id) {
+          return;
+        }
+        this._id = +id;
+        let emp = this._employeeService.getEmployee(this._id);
+        if (!emp) {
+          return;
+        }
+        this.employee = emp;
+      });
     });
+
   }
 
   onNextClick(): void {

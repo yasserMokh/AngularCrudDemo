@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of as ObservableOf, delay as ObservableDelay } from 'rxjs';
 import { Employee } from '../models/employee.model';
 import { IEmployee } from '../models/interfaces/iemployee.interface';
 
@@ -50,8 +51,9 @@ export class EmployeeService {
     ]
   }
 
-  getAllEmployees(): IEmployee[] {
-    return this._employees;
+  getAllEmployees(): Observable<IEmployee[]> {
+    
+    return ObservableOf(this._employees).pipe(ObservableDelay(2000));
   }
 
   getEmployee(employeeId:number):IEmployee | null{

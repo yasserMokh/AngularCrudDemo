@@ -14,6 +14,8 @@ import { ViewEmployeeComponent } from './employee/components/view/view-employee.
 import { CompareValidatorDirective } from './shared/validation/compare-validator.directive';
 import { EmployeeDetailsComponent } from './employee/components/details/employee-details.component';
 import { FilterEmployeesByNamePipe } from './employee/filters/filter-employees-by-name.pipe';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { NavigationLoadingIndicatorComponent } from './shared/components/navigation-loading-indicator/navigation-loading-indicator.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { FilterEmployeesByNamePipe } from './employee/filters/filter-employees-b
     CompareValidatorDirective,
     ViewEmployeeComponent,
     EmployeeDetailsComponent,
-    FilterEmployeesByNamePipe
+    FilterEmployeesByNamePipe,
+    SpinnerComponent,
+    NavigationLoadingIndicatorComponent    
   ],
   imports: [
     BrowserModule,

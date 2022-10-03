@@ -4,9 +4,10 @@ import { CreateEmployeeComponent } from './employee/components/create/create-emp
 import { CreateEmployeeCanDeactivateGuard } from './employee/guards/create-employee-can-deactivate.guard';
 import { EmployeeListComponent } from './employee/components/list/employee-list.component';
 import { EmployeeDetailsComponent } from './employee/components/details/employee-details.component';
+import { EmployeeListResolver } from './employee/resolvers/employee-list.resolver';
 
 const routes: Routes = [
-  {path: 'employee.list', component:EmployeeListComponent },
+  {path: 'employee.list', component:EmployeeListComponent, resolve: { employeeList: EmployeeListResolver } },
   {path:'employee.create', component:CreateEmployeeComponent, canDeactivate: [CreateEmployeeCanDeactivateGuard]},
   {path: 'employees/:id', component:EmployeeDetailsComponent },
   {path:'', redirectTo:'/employee.list', pathMatch: 'full'}];

@@ -33,25 +33,32 @@ export class EmployeeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employees = this._employeeService.getAllEmployees();
-    this.filteredEmployees = this.employees;
-    if (this.employees && this.employees.length > 0) {
-      this.employeeToDisplay = this.employees[this.currentIndex];
-    }
-    this._route.paramMap.subscribe(params => {
-      let id = params.get('id');
-      if (!id) {
-        return;
+    this._route.data.subscribe(routeData=>{
+      this.employees = routeData['employeeList'];
+      this.filteredEmployees = this.employees;
+      if (this.employees && this.employees.length > 0) {
+        this.employeeToDisplay = this.employees[this.currentIndex];
       }
-      this.selectedId = +id;
+      this._route.paramMap.subscribe(params => {
+        let id = params.get('id');
+        if (!id) {
+          return;
+        }
+        this.selectedId = +id;
+      });
+      this._route.queryParamMap.subscribe(params => {
+        let searchString = params.get('searchTerm');
+        if (!searchString) {
+          return;
+        }
+        this.searchTerm = searchString;
+      });
     });
-    this._route.queryParamMap.subscribe(params => {
-      let searchString = params.get('searchTerm');
-      if (!searchString) {
-        return;
-      }
-      this.searchTerm = searchString;
-    });
+    /* this._employeeService.getAllEmployees().subscribe(empList => {
+      this.employees = empList;
+      
+    }); */
+
   }
 
   nextEmployee(): void {
@@ -72,7 +79,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onEmployeeClick(employeeId: number) {
-    this._router.navigate(['employees', employeeId], (this._searchTerm)?{ queryParams: { 'searchTerm': this._searchTerm } }:{});
+    this._router.navigate(['employees', employeeId], (this._searchTerm) ? { queryParams: { 'searchTerm': this._searchTerm } } : {});
   }
 
   filterEmployeesByName(searchString: string): IEmployee[] | null {
