@@ -90,6 +90,10 @@ export class EmployeeListComponent implements OnInit {
     return searchResult;
   }
 
+  viewEmployee(id: number): void {
+    this._router.navigate(['employees', id], (this.searchTerm) ? { queryParams: { 'searchTerm': this.searchTerm } } : {});
+  }
+
 }
 
 
