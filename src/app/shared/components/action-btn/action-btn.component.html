@@ -1,0 +1,8 @@
+<span *ngIf="showConfirm">
+    <span>{{confirmMessage}}</span>
+    <button class="btn btn-danger" (click)="onActionButtonClick()">Yes</button>
+    <button class="btn btn-primary" (click)="showConfirm=false">No</button>
+</span>
+<span *ngIf="!showConfirm">
+    <button class="btn btn-danger" (click)="showConfirm=true">{{buttonText}}</button>
+</span>

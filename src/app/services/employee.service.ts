@@ -65,11 +65,13 @@ export class EmployeeService {
   }
 
   saveEmployee(employee: IEmployee): void {
-    console.log('employee', employee);
+
     let empIndex = this._employees.findIndex(e => e.id === employee.id);
-    console.log('empIndex', empIndex);
+    if (empIndex == -1) {
+      return;
+    }
     this._employees[empIndex] = Object.assign({}, employee);
-    console.log(this._employees);
+
   }
 
 
@@ -80,6 +82,13 @@ export class EmployeeService {
     }).id;
     empCopy.id = maxId + 1;
     this._employees.push(empCopy);
-    console.log(empCopy);
+  }
+
+  deleteEmployee(id: number) {
+    let empIndex = this._employees.findIndex(e => e.id === id);
+    if (empIndex == -1) {
+      return;
+    }
+    this._employees.splice(empIndex, 1);
   }
 }

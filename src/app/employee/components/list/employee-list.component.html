@@ -1,13 +1,22 @@
-<div class="mb-3"> 
-  <input type="name" class="form-control" id="name" name="name" [(ngModel)]="searchTerm" placeholder="Search By Name" /> 
-</div> 
+<div class="mb-3">
+  <input type="name" class="form-control" id="name" name="name" [(ngModel)]="searchTerm" placeholder="Search By Name" />
+</div>
 <div class="card-deck">
-  <div *ngFor="let emp of filteredEmployees" [class.highlight]="emp.id===selectedId" >
+  <div *ngFor="let emp of filteredEmployees" [class.highlight]="emp.id===selectedId">
 
     <app-view-employee [employee]="emp">
       <button class="btn btn-primary" (click)="viewEmployee(emp.id)">View</button>
-    <a class="btn btn-primary" [routerLink]="['/employee.edit', emp.id]" >Edit</a>
-    <button class="btn btn-danger">Delete</button>
+      <a class="btn btn-primary" [routerLink]="['/employee.edit', emp.id]">Edit</a>
+      <app-action-btn (actionConfirm)="deleteEmployee(emp.id)"></app-action-btn>
+      <!-- <button class="btn btn-danger" (click)="deleteEmployee(emp.id)">Delete</button> -->
+      <!-- <span *ngIf="confirmDelete">
+        <span>Are you sure you want to delete ?</span>
+        <button class="btn btn-danger" (click)="deleteEmployee(emp.id)">Yes</button>
+        <button class="btn btn-primary" (click)="confirmDelete=false">No</button>
+    </span>
+    <span *ngIf="!confirmDelete">
+        <button class="btn btn-danger" (click)="confirmDelete=true">Delete</button>
+    </span> -->      
     </app-view-employee>
   </div>
 </div>

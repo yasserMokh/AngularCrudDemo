@@ -18,6 +18,7 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
 import { NavigationLoadingIndicatorComponent } from './shared/components/navigation-loading-indicator/navigation-loading-indicator.component';
 import { EmployeeFormComponent } from './employee/components/employee-form/employee-form.component';
 import { EditEmployeeComponent } from './employee/components/edit/edit-employee.component';
+import { ActionBtnComponent } from './shared/components/action-btn/action-btn.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { EditEmployeeComponent } from './employee/components/edit/edit-employee.
     SpinnerComponent,
     NavigationLoadingIndicatorComponent,
     EmployeeFormComponent,
-    EditEmployeeComponent    
+    EditEmployeeComponent,
+    ActionBtnComponent    
   ],
   imports: [
     BrowserModule,

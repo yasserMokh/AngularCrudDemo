@@ -19,6 +19,7 @@ export class EmployeeListComponent implements OnInit {
   employeeToDisplay: IEmployee = new Employee();
   clickedEmployee: IEmployee | null = null;
   selectedId: number = -1;
+  confirmDelete: boolean = false;
 
   private _searchTerm: string = '';
   get searchTerm(): string {
@@ -33,7 +34,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._route.data.subscribe(routeData=>{
+    this._route.data.subscribe(routeData => {
       this.employees = routeData['employeeList'];
       this.filteredEmployees = this.employees;
       if (this.employees && this.employees.length > 0) {
@@ -92,6 +93,19 @@ export class EmployeeListComponent implements OnInit {
 
   viewEmployee(id: number): void {
     this._router.navigate(['employees', id], (this.searchTerm) ? { queryParams: { 'searchTerm': this.searchTerm } } : {});
+  }
+
+  deleteEmployee(id: number): void {
+    this._employeeService.deleteEmployee(id);
+    this.reloadFilteredEmployees();
+  }
+
+  reloadFilteredEmployees(): void {
+     this.filteredEmployees = this.employees;
+   if (!this.searchTerm) {
+      return;
+    }
+    this.searchTerm = this.searchTerm;
   }
 
 }
