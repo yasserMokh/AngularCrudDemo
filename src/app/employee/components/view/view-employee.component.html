@@ -1,4 +1,44 @@
-<div class="card m-3" (click)="handleEmployeeClick()">
+<app-collapsible-card>
+  <h3 class="collapsible-header">{{employee.name}}</h3>
+  <div class="row vertical-align collapsible-body">
+    <div class="col-4">
+      <img [src]="employee.photoPath" class="imageClass" [alt]="employee.name">
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col-3">Name:</div>
+        <div class="col-3">{{employee.name}}</div>
+        <div class="col-3">Gender:</div>
+        <div class="col-3">{{employee.gender}}</div>
+      </div>
+      <div class="row">
+        <div class="col-3">Birth Date:</div>
+        <div class="col-3">{{employee.dateOfBirth | date}}</div>
+        <div class="col-3">Active:</div>
+        <div class="col-3">{{employee.isActive}}</div>
+      </div>
+      <div class="row">
+        <div class="col-3">Department:</div>
+        <div class="col-3">{{employee.department}}</div>
+        <div class="col-3">Contact Preference:</div>
+        <div class="col-3">{{employee.contactPreference}}</div>
+      </div>
+      <div class="row">
+        <div class="col-3">Email:</div>
+        <div class="col-3">{{employee.email}}</div>
+        <div class="col-3">Phone Number:</div>
+        <div class="col-3">{{employee.phoneNumber}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="collapsible-footer">
+    <ng-content>
+  
+    </ng-content>
+  </div>
+</app-collapsible-card>
+
+<!-- <div class="card m-3" (click)="handleEmployeeClick()">
   <div class="card-header">
     <h3>{{employee.name}}</h3>
   </div>
@@ -40,4 +80,4 @@
 
     </ng-content>
   </div>
-</div>
+</div> -->

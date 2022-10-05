@@ -19,6 +19,7 @@ import { NavigationLoadingIndicatorComponent } from './shared/components/navigat
 import { EmployeeFormComponent } from './employee/components/employee-form/employee-form.component';
 import { EditEmployeeComponent } from './employee/components/edit/edit-employee.component';
 import { ActionBtnComponent } from './shared/components/action-btn/action-btn.component';
+import { CollapsibleCardComponent } from './shared/components/collapsible-card/collapsible-card.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ActionBtnComponent } from './shared/components/action-btn/action-btn.co
     NavigationLoadingIndicatorComponent,
     EmployeeFormComponent,
     EditEmployeeComponent,
-    ActionBtnComponent    
+    ActionBtnComponent,
+    CollapsibleCardComponent    
   ],
   imports: [
     BrowserModule,

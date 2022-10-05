@@ -1,0 +1,17 @@
+<div class="card m-3">
+    <div class="card-header pointer-mouse" (click)="toggleCollapse()">
+      <ng-content select=".collapsible-header" >
+
+      </ng-content>
+    </div>
+    <div class=".card-body" [hidden]="isCollapsed">
+      <ng-content select=".collapsible-body">
+
+      </ng-content>
+    </div>
+    <div class="card-footer empty-hidden" [hidden]="isCollapsed">
+      <ng-content select=".collapsible-footer" >
+  
+      </ng-content>
+    </div>
+  </div>

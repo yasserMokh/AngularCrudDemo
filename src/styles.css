@@ -1,22 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-.imageClass{
-    width:200px;
-    height:200px;
+.imageClass {
+    width: 200px;
+    height: 200px;
 }
-.vertical-align{
+
+.vertical-align {
     display: flex;
     align-items: center;
 }
 
-.pointer-mouse{
+.pointer-mouse {
     cursor: pointer;
 }
 
 .empty-hidden:empty {
-    display:none;
+    display: none;
 }
 
-.highlight .card {    
+.highlight .card {
     --bs-bg-opacity: 1;
-    background-color: rgba(var(--bs-warning-rgb),var(--bs-bg-opacity))!important;
-  }
+    background-color: rgba(var(--bs-warning-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.is-hidden {
+    display: none;
+}
