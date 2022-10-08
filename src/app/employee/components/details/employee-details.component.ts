@@ -24,11 +24,12 @@ export class EmployeeDetailsComponent implements OnInit {
           return;
         }
         this._id = +id;
-        let emp = this._employeeService.getEmployee(this._id);
-        if (!emp) {
-          return;
-        }
-        this.employee = emp;
+        let emp = this._employeeService.getEmployee(this._id).subscribe(emp=>{
+          if (!emp) {
+            return;
+          }
+          this.employee = emp;
+        });
       });
     });
   }

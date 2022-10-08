@@ -22,8 +22,11 @@ export class CreateEmployeeComponent implements OnInit {
   }  
 
   saveEmployee(employeeModel: IEmployee): void {   
-      this._employeeService.createEmployee(employeeModel);   
-      this._router.navigate(['employee.list']);    
+      this._employeeService.createEmployee(employeeModel).subscribe((emp)=>{
+        console.log('added emp', emp);
+        this._router.navigate(['employee.list']);    
+      });   
+      
   }
 
 }

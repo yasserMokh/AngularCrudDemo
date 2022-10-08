@@ -96,16 +96,22 @@ export class EmployeeListComponent implements OnInit {
   }
 
   deleteEmployee(id: number): void {
-    this._employeeService.deleteEmployee(id);
-    this.reloadFilteredEmployees();
+    this._employeeService.deleteEmployee(id).subscribe(()=>{
+      console.log('employee ', id, ' deleted')
+      this.reloadEmployees();  
+    });
+    
   }
 
-  reloadFilteredEmployees(): void {
-     this.filteredEmployees = this.employees;
-   if (!this.searchTerm) {
-      return;
-    }
-    this.searchTerm = this.searchTerm;
+  reloadEmployees(): void {
+    this._employeeService.getAllEmployees().subscribe(emps=>{
+      this.employees=emps;
+      this.filteredEmployees = this.employees;
+      if (!this.searchTerm) {
+        return;
+      }
+      this.searchTerm = this.searchTerm;
+    });
   }
 
 }

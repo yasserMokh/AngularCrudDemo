@@ -28,18 +28,21 @@ export class EditEmployeeComponent implements OnInit {
           return;
         }
         this._id = +id;
-        let emp = this._employeeService.getEmployee(this._id);
-        if (!emp) {
-          return;
-        }
-        this.employee = Object.assign({},emp);
+        let emp = this._employeeService.getEmployee(this._id).subscribe(emp=>{
+          if (!emp) {
+            return;
+          }
+          this.employee = Object.assign({},emp);  
+        });        
       });
     });
   }  
 
   saveEmployee(employeeModel: IEmployee): void {   
-      this._employeeService.saveEmployee(employeeModel);   
-      this._router.navigate(['employee.list']);    
+      this._employeeService.saveEmployee(employeeModel).subscribe(()=>{
+        this._router.navigate(['employee.list']);    
+      });   
+      
   }
 
 }
