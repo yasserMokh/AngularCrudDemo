@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
@@ -20,6 +21,7 @@ import { EmployeeFormComponent } from './employee/components/employee-form/emplo
 import { EditEmployeeComponent } from './employee/components/edit/edit-employee.component';
 import { ActionBtnComponent } from './shared/components/action-btn/action-btn.component';
 import { CollapsibleCardComponent } from './shared/components/collapsible-card/collapsible-card.component';
+import { ErrorComponent } from './shared/components/error/error.component';
 
 
 @NgModule({
@@ -37,12 +39,14 @@ import { CollapsibleCardComponent } from './shared/components/collapsible-card/c
     EmployeeFormComponent,
     EditEmployeeComponent,
     ActionBtnComponent,
-    CollapsibleCardComponent    
+    CollapsibleCardComponent,
+    ErrorComponent    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot()
   ],

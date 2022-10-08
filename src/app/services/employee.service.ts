@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of as ObservableOf, delay as ObservableDelay } from 'rxjs';
 import { Employee } from '../models/employee.model';
 import { IEmployee } from '../models/interfaces/iemployee.interface';
+import { HttpClient } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class EmployeeService {
 
   private _employees: IEmployee[];
 
-  constructor() {
+  constructor(private _httpClient: HttpClient) {
+
     this._employees = [
       {
         id: 1,
@@ -52,8 +54,8 @@ export class EmployeeService {
   }
 
   getAllEmployees(): Observable<IEmployee[]> {
-
-    return ObservableOf(this._employees).pipe(ObservableDelay(2000));
+    // return ObservableOf(this._employees).pipe(ObservableDelay(2000));
+    return this._httpClient.get<IEmployee[]>('http://localhost:3000/employees');
   }
 
   getEmployee(employeeId: number): IEmployee | null {

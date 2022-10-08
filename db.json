@@ -1,0 +1,40 @@
+{
+    "employees":[
+        {
+            "id": 1,
+            "name": "Mark",
+            "gender": "male",
+            "dateOfBirth":"10/25/1988",
+            "contactPreference": "email",
+            "department": 1,
+            "isActive": true,
+            "email": "mark@pragimtech.com",
+            "phoneNumber": null,
+            "photoPath": "assets/images/mark.png"
+          },
+          {
+            "id": 2,
+            "name": "Mary",
+            "gender": "female",
+            "dateOfBirth": "11/20/1979",
+            "contactPreference": "phone",
+            "department": 2,
+            "isActive": true,
+            "email": null,
+            "phoneNumber": "2345978640",
+            "photoPath": "assets/images/mary.png"
+          },
+          {
+            "id": 3,
+            "name": "John",
+            "gender": "male",
+            "dateOfBirth": "3/25/1976",
+            "contactPreference": "phone",
+            "department": 1,
+            "isActive": false,
+            "email": null,
+            "phoneNumber": "5432978640",
+            "photoPath": "assets/images/john.png"
+          }
+    ]
+}

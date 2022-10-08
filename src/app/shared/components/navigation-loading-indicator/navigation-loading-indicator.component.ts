@@ -18,8 +18,14 @@ export class NavigationLoadingIndicatorComponent implements OnInit {
         return;
       };
 
+      if(routerEvent instanceof (NavigationError)){
+        this.showLoadingIndicator = false;
+        console.log('error');
+        _router.navigate(['/error']);
+      }
+
       if (routerEvent instanceof (NavigationEnd) ||
-        routerEvent instanceof (NavigationError) ||
+         
         routerEvent instanceof (NavigationCancel)) {
         this.showLoadingIndicator = false;
       }
